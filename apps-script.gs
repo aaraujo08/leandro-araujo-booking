@@ -30,10 +30,61 @@ function doGet(e) {
     if (e.parameter.action === 'getSlots') {
       return jsonResponse(getAvailableSlots(e.parameter.date, e.parameter.duration));
     }
+    if (e.parameter.action === 'getAvailability') {
+      return jsonResponse(getAvailability(e.parameter.days));
+    }
     return jsonResponse({ error: 'unknown action' });
   } catch (err) {
     return jsonResponse({ error: err.message });
   }
+}
+
+function getAvailability(daysCount) {
+  const count = Math.min(parseInt(daysCount) || 14, 30);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const rangeEnd = new Date(today);
+  rangeEnd.setDate(today.getDate() + count);
+  rangeEnd.setHours(23, 59, 59, 999);
+
+  const cal = CalendarApp.getCalendarById(CALENDAR_ID);
+  const allEvents = cal.getEvents(today, rangeEnd);
+  const now = new Date();
+
+  const result = [];
+  for (let i = 0; i < count; i++) {
+    const date = new Date(today);
+    date.setDate(today.getDate() + i);
+    const dateStr = Utilities.formatDate(date, TZ, 'yyyy-MM-dd');
+
+    if (!WORK_DAYS.includes(date.getDay())) {
+      result.push({ date: dateStr, slots: 0, isWorking: false });
+      continue;
+    }
+
+    const dayStart = new Date(date); dayStart.setHours(WORK_HOURS.start, 0, 0, 0);
+    const dayEnd = new Date(date); dayEnd.setHours(WORK_HOURS.end, 0, 0, 0);
+    const totalSlots = WORK_HOURS.end - WORK_HOURS.start;
+
+    const busy = allEvents
+      .filter(ev => ev.getStartTime() < dayEnd && ev.getEndTime() > dayStart)
+      .map(ev => ({ start: ev.getStartTime().getTime(), end: ev.getEndTime().getTime() }));
+
+    let avail = 0;
+    for (let h = WORK_HOURS.start; h < WORK_HOURS.end; h++) {
+      const slotStart = new Date(date); slotStart.setHours(h, 0, 0, 0);
+      const slotEnd = new Date(slotStart.getTime() + 60 * 60000);
+      if (slotEnd > dayEnd) continue;
+      if (slotStart < now) continue;
+      const conflicts = busy.some(b => slotStart.getTime() < b.end && slotEnd.getTime() > b.start);
+      if (!conflicts) avail++;
+    }
+
+    result.push({ date: dateStr, slots: avail, total: totalSlots, isWorking: true });
+  }
+
+  return { days: result };
 }
 
 function doPost(e) {

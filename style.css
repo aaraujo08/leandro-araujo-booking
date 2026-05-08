@@ -501,6 +501,164 @@ h3 {
 }
 
 /* ============================================================
+   Live availability strip
+   ============================================================ */
+.availability-section {
+  padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.availability-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.availability-heading h2 { margin-top: 0.4rem; }
+
+.availability-legend {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--ink-500);
+}
+.legend-item { display: inline-flex; align-items: center; gap: 0.4rem; }
+.legend-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  display: inline-block;
+}
+.legend-dot.free { background: var(--green-500); }
+.legend-dot.half { background: var(--orange-400); }
+.legend-dot.full { background: var(--orange-600); }
+.legend-dot.off  { background: var(--ink-300); opacity: 0.5; }
+
+.availability-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+  gap: 0.7rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+  min-height: 130px;
+}
+
+.day-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.85rem 0.5rem;
+  background: var(--cream);
+  border: 1.5px solid transparent;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 200ms var(--ease);
+  text-align: center;
+  position: relative;
+  min-width: 0;
+}
+.day-card:hover:not(.day-off):not(.day-full) {
+  border-color: var(--green-500);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+  background: var(--green-50);
+}
+
+.day-card .dow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--ink-500);
+  text-transform: uppercase;
+}
+.day-card .num {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ink-900);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.day-card .month {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--ink-500);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.day-card .status {
+  margin-top: 0.25rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.day-card .status::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.day-card.day-free   .status { color: var(--green-700); }
+.day-card.day-free   .status::before { background: var(--green-500); }
+.day-card.day-half   .status { color: var(--orange-600); }
+.day-card.day-half   .status::before { background: var(--orange-400); }
+.day-card.day-full   .status { color: var(--orange-600); }
+.day-card.day-full   .status::before { background: var(--orange-600); }
+.day-card.day-off    .status { color: var(--ink-300); }
+.day-card.day-off    .status::before { background: var(--ink-300); }
+
+.day-card.day-off, .day-card.day-full {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.day-card.today {
+  border-color: var(--green-300);
+}
+.day-card.today::after {
+  content: "Today";
+  position: absolute;
+  top: -8px;
+  background: var(--green-700);
+  color: var(--paper);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+
+.availability-hint {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--ink-500);
+  font-style: italic;
+}
+
+@media (max-width: 540px) {
+  .availability-strip {
+    overflow-x: auto;
+    grid-template-columns: repeat(14, minmax(82px, 1fr));
+    grid-auto-flow: column;
+    scroll-snap-type: x mandatory;
+    padding: 0.85rem;
+  }
+  .day-card { scroll-snap-align: start; }
+  .availability-heading { flex-direction: column; align-items: flex-start; }
+}
+
+/* ============================================================
    Section heading
    ============================================================ */
 .section-heading {

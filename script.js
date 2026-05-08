@@ -296,5 +296,103 @@ window.addEventListener('scroll', () => {
   header.classList.toggle('scrolled', window.scrollY > 8);
 }, { passive: true });
 
+// ============================================================
+// Live availability strip
+// ============================================================
+async function loadAvailability() {
+  const container = document.getElementById('availability-strip');
+  if (!container) return;
+
+  if (APPS_SCRIPT_URL.startsWith('PASTE_')) {
+    container.innerHTML = '<div class="state-msg">Configure the Apps Script URL to see live availability.</div>';
+    return;
+  }
+
+  try {
+    const r = await fetch(`${APPS_SCRIPT_URL}?action=getAvailability&days=14`);
+    const data = await r.json();
+
+    if (data.error || !data.days) {
+      container.innerHTML = `<div class="state-msg">Couldn't load availability.</div>`;
+      return;
+    }
+
+    const today = new Date(); today.setHours(0,0,0,0);
+    const todayStr = formatDate(today);
+    const monthsShort = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const dowShort    = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+    container.innerHTML = data.days.map(d => {
+      const [y, m, day] = d.date.split('-').map(Number);
+      const date = new Date(y, m - 1, day);
+      const dow = dowShort[date.getDay()];
+      const monthName = monthsShort[date.getMonth()];
+
+      let statusClass, statusLabel;
+      if (!d.isWorking) {
+        statusClass = 'day-off';
+        statusLabel = 'Closed';
+      } else if (d.slots === 0) {
+        statusClass = 'day-full';
+        statusLabel = 'Booked';
+      } else if (d.slots <= 3) {
+        statusClass = 'day-half';
+        statusLabel = `${d.slots} left`;
+      } else {
+        statusClass = 'day-free';
+        statusLabel = `${d.slots} open`;
+      }
+
+      const isToday = d.date === todayStr ? ' today' : '';
+      const clickable = (statusClass === 'day-free' || statusClass === 'day-half')
+        ? `data-date="${d.date}"`
+        : '';
+
+      return `
+        <div class="day-card ${statusClass}${isToday}" ${clickable} role="${clickable ? 'button' : 'presentation'}" ${clickable ? 'tabindex="0"' : ''}>
+          <span class="dow">${dow}</span>
+          <span class="num">${day}</span>
+          <span class="month">${monthName}</span>
+          <span class="status">${statusLabel}</span>
+        </div>
+      `;
+    }).join('');
+
+    document.querySelectorAll('.day-card[data-date]').forEach(el => {
+      el.addEventListener('click', () => jumpToBookingWithDate(el.dataset.date));
+      el.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          jumpToBookingWithDate(el.dataset.date);
+        }
+      });
+    });
+  } catch (err) {
+    container.innerHTML = `<div class="state-msg">Couldn't load availability: ${err.message}</div>`;
+  }
+}
+
+function jumpToBookingWithDate(dateStr) {
+  // If no service selected yet, default to first one (lawn-mowing)
+  if (!state.service) state.service = SERVICES[0];
+
+  state.date = dateStr;
+  const [y, m, d] = dateStr.split('-').map(Number);
+  state.currentMonth = new Date(y, m - 1, 1);
+
+  // Mark service card as selected (visual sync if user scrolls back)
+  document.querySelectorAll('#services-grid .service-card').forEach(c => {
+    c.classList.toggle('selected', c.dataset.id === state.service.id);
+  });
+
+  // Scroll to booking and jump to time slot picker
+  document.getElementById('book').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  setTimeout(() => {
+    goToStep('step-time', 3);
+    loadSlots();
+  }, 400);
+}
+
 // Init
 renderServices();
+loadAvailability();
