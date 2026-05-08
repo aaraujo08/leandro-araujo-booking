@@ -1267,115 +1267,91 @@ button.back { margin-top: 1.5rem; padding-left: 0; }
   );
 }
 
-.business-card {
-  position: relative;
-  max-width: 460px;
-  margin: 0 0 2rem 0;
-  background: var(--paper);
-  border-radius: var(--radius-lg);
-  padding: 2rem 2.25rem;
-  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5), 0 12px 24px rgba(0,0,0,0.25);
-  overflow: hidden;
-  transform: rotate(-1deg);
-  transition: transform 280ms var(--ease);
-}
-.business-card:hover { transform: rotate(0deg); }
-
-.business-card-stripe {
-  position: absolute;
-  top: 0; left: 0; bottom: 0;
-  width: 6px;
-  background: linear-gradient(180deg,
-    var(--green-700) 0%, var(--green-700) 33%,
-    var(--paper) 33%, var(--paper) 66%,
-    var(--orange-500) 66%, var(--orange-500) 100%
-  );
-}
-
-.business-card-content {
+.footer-info {
   display: flex;
   align-items: flex-start;
-  gap: 1.25rem;
+  justify-content: flex-end;
+  gap: 1.1rem;
+  margin-bottom: 2rem;
 }
 
-.card-logo .logo-mark {
-  width: 64px;
-  height: 64px;
+.footer-logo-mark {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
 }
-.card-logo .logo-img {
-  width: 64px;
-  height: 64px;
+.footer-logo-mark .logo-img,
+.footer-logo-mark .logo-svg {
+  width: 56px;
+  height: 56px;
   border-radius: 14px;
-  object-fit: cover;
 }
-.card-logo .logo-svg {
-  width: 64px;
-  height: 64px;
+.footer-logo-mark .logo-img { object-fit: cover; }
+
+.footer-info-text {
+  text-align: right;
 }
 
-.card-info { flex: 1; min-width: 0; }
-
-.card-name {
+.footer-name {
   font-family: var(--display);
   font-size: 1.55rem;
   font-weight: 600;
-  color: var(--ink-900);
+  color: var(--cream);
   letter-spacing: -0.022em;
   line-height: 1.1;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.35rem;
 }
-.card-role {
-  font-size: 0.78rem;
+
+.footer-role {
+  font-size: 0.74rem;
   font-weight: 600;
-  color: var(--green-700);
-  letter-spacing: 0.08em;
+  color: var(--green-200);
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+  margin-bottom: 0.95rem;
+  opacity: 0.85;
 }
 
-.card-divider {
-  height: 1px;
-  background: linear-gradient(90deg, var(--green-200), transparent);
-  margin: 1rem 0 0.85rem;
-}
-
-.card-phone {
+.footer-phone-link {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
   font-family: var(--display);
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 600;
-  color: var(--ink-900);
+  color: var(--cream);
   letter-spacing: -0.012em;
   transition: color 200ms var(--ease);
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.55rem;
 }
-.card-phone:hover { color: var(--green-700); }
-.card-phone svg { width: 18px; height: 18px; color: var(--green-700); flex-shrink: 0; }
+.footer-phone-link:hover { color: var(--green-200); }
+.footer-phone-link svg { color: var(--green-300); flex-shrink: 0; }
 
-.card-tagline {
+.footer-tagline-text {
   font-size: 0.78rem;
-  color: var(--ink-500);
+  color: var(--green-200);
   font-style: italic;
   letter-spacing: 0.01em;
+  opacity: 0.7;
 }
 
 .footer-bottom {
   display: block;
   text-align: center;
   margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
   color: var(--green-200);
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 @media (max-width: 540px) {
-  .business-card { padding: 1.75rem 1.5rem; transform: none; }
-  .business-card-content { flex-direction: column; gap: 1rem; align-items: center; text-align: center; }
-  .card-phone { font-size: 1.15rem; }
+  .footer-info { justify-content: center; flex-direction: column; align-items: center; }
+  .footer-info-text { text-align: center; }
+  .footer-phone-link { font-size: 1.15rem; }
 }
 
 /* ============================================================
