@@ -14,9 +14,12 @@
   --green-100: #dcfce7;
   --green-50:  #f0fdf4;
 
-  /* lime — fresh accent (used sparingly) */
-  --lime-500:  #84cc16;
-  --lime-300:  #d9f99d;
+  /* Irish flag orange — accent (used sparingly) */
+  --orange-600: #ea6d24;
+  --orange-500: #ff883e;
+  --orange-400: #ffa869;
+  --orange-200: #ffd5b8;
+  --orange-100: #ffe7d6;
 
   /* paper + ink */
   --cream:      #f5f3eb;
@@ -72,30 +75,30 @@ body {
   overflow-x: hidden;
 }
 
-/* the canvas — layered green gradients + subtle leaf grain */
+/* the canvas — layered green gradients (Brazil + Ireland verdant) */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(ellipse 1100px 700px at 85% -5%,  rgba(34,197,94,0.18),  transparent 60%),
-    radial-gradient(ellipse 900px 600px at -10% 30%,  rgba(132,204,22,0.12), transparent 65%),
-    radial-gradient(ellipse 700px 500px at 50% 100%,  rgba(22,163,74,0.10),  transparent 70%),
+    radial-gradient(ellipse 1100px 700px at 85% -5%,  rgba(34,197,94,0.20),  transparent 60%),
+    radial-gradient(ellipse 900px 600px at -10% 30%,  rgba(22,163,74,0.14),  transparent 65%),
+    radial-gradient(ellipse 700px 500px at 50% 100%,  rgba(255,136,62,0.07), transparent 70%),
     radial-gradient(ellipse 800px 600px at 100% 60%,  rgba(187,247,208,0.30), transparent 60%),
     var(--cream);
 }
 
-/* subtle leaf pattern overlay for texture */
+/* gardening tools pattern — subtle, hand-drawn feel */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.06;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><g fill='%23052e16'><path d='M30 20 C18 28 14 44 22 56 C30 64 42 60 46 50 C42 38 36 28 30 20Z'/><path d='M90 70 C78 78 74 94 82 106 C90 114 102 110 106 100 C102 88 96 78 90 70Z'/></g></svg>");
-  background-size: 240px 240px;
+  opacity: 0.075;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320' viewBox='0 0 320 320'><g fill='none' stroke='%23052e16' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'><g transform='translate(40,50) rotate(-18)'><circle cx='6' cy='14' r='4'/><circle cx='14' cy='14' r='4'/><line x1='9' y1='12' x2='26' y2='-4'/><line x1='11' y1='12' x2='28' y2='-4'/><line x1='6' y1='14' x2='6' y2='20'/><line x1='14' y1='14' x2='14' y2='20'/></g><g transform='translate(140,80)'><rect x='0' y='0' width='34' height='16' rx='3'/><circle cx='7' cy='18' r='3.5'/><circle cx='27' cy='18' r='3.5'/><path d='M34 8 L46 -8'/><path d='M46 -8 L56 -8'/><line x1='4' y1='-2' x2='30' y2='-2'/></g><g transform='translate(250,40) rotate(20)'><line x1='0' y1='0' x2='22' y2='22'/><path d='M22 22 L30 25 L31 28 L26 32 L19 28 Z'/></g><g transform='translate(50,180)'><rect x='0' y='0' width='20' height='15' rx='2'/><path d='M20 5 L28 1 L28 10 L20 10'/><line x1='2' y1='4' x2='-3' y2='1'/><line x1='-3' y1='1' x2='-7' y2='-1'/><circle cx='-8' cy='-1.5' r='0.7' fill='%23052e16'/><circle cx='-6' cy='1' r='0.7' fill='%23052e16'/></g><g transform='translate(170,200) rotate(-25)'><line x1='0' y1='0' x2='24' y2='24'/><path d='M24 24 L34 22 M27 26 L36 26 M29 28 L38 30 M31 30 L40 34'/></g><g transform='translate(260,220)'><path d='M0 4 Q4 0 8 4 Q12 8 16 4'/><path d='M0 10 Q4 6 8 10 Q12 14 16 10'/><path d='M0 16 Q4 12 8 16 Q12 20 16 16'/></g><g transform='translate(95,260) rotate(35)'><circle cx='8' cy='8' r='3'/><circle cx='8' cy='8' r='6'/><line x1='8' y1='14' x2='8' y2='28'/></g></g></svg>");
+  background-size: 360px 360px;
   background-repeat: repeat;
 }
 
@@ -173,7 +176,7 @@ h3 {
   background: var(--green-500);
 }
 .flag-dot.brazil  { background: var(--green-500); }
-.flag-dot.ireland { background: var(--lime-500); }
+.flag-dot.ireland { background: var(--orange-500); }
 
 .lead {
   font-size: 1.15rem;
@@ -470,7 +473,7 @@ h3 {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--green-500);
+  background: var(--orange-500);
   position: relative;
   flex-shrink: 0;
 }
@@ -479,8 +482,8 @@ h3 {
   position: absolute;
   inset: -4px;
   border-radius: 50%;
-  background: var(--green-400);
-  opacity: 0.4;
+  background: var(--orange-400);
+  opacity: 0.45;
   animation: pulse-dot 1.8s infinite;
 }
 @keyframes pulse-dot {
@@ -736,8 +739,12 @@ h3 {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--green-700) 0%, var(--green-500) 50%, var(--lime-500) 100%);
+  height: 5px;
+  background: linear-gradient(90deg,
+    var(--green-700) 0%, var(--green-700) 33%,
+    var(--paper) 33%, var(--paper) 66%,
+    var(--orange-500) 66%, var(--orange-500) 100%
+  );
 }
 
 .step { display: none; }
