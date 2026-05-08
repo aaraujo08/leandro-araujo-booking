@@ -4,10 +4,9 @@
 // ============================================================
 
 const SERVICES = {
-  'lawn-mowing':      { name: 'Lawn mowing',           durationMin: 90 },
-  'hedge-pruning':    { name: 'Hedge & tree pruning',  durationMin: 120 },
-  'garden-tidy':      { name: 'Garden tidy-up',        durationMin: 60 },
-  'landscape-design': { name: 'Landscape design',      durationMin: 60 }
+  'lawn-mowing':   { name: 'Lawn mowing',           durationMin: 90 },
+  'hedge-pruning': { name: 'Hedge & tree pruning',  durationMin: 120 },
+  'garden-tidy':   { name: 'Garden tidy-up',        durationMin: 60 }
 };
 
 // Working hours (24h). Slots start on the hour.

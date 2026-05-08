@@ -40,15 +40,6 @@ const SERVICES = [
       <path d="M12 8C12 5.5 14 4 16 4C16 6.5 14 8 12 8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
       <path d="M12 8C12 5.5 10 4 8 4C8 6.5 10 8 12 8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
     </svg>`
-  },
-  {
-    id: 'landscape-design',
-    name: 'Landscape design',
-    duration: 60,
-    blurb: 'Plan a season ahead',
-    icon: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 3L19 11H15V20H9V11H5L12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-    </svg>`
   }
 ];
 
