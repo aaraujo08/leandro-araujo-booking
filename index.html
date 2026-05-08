@@ -3,29 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Irish Gardener — Leandro Araújo · Dublin</title>
-  <meta name="description" content="The Irish Gardener — lawn mowing, hedge pruning, tidy-ups and landscape design across Dublin. Book in seconds.">
+  <title>Leandro Araújo — The Irish Gardener · Dublin</title>
+  <meta name="description" content="Leandro Araújo, gardener in Dublin since 2014. Lawn mowing, hedge pruning and seasonal tidy-ups. Book in seconds.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..600,100;1,9..144,400..600,100&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- decorative shamrocks scattered in the background -->
-  <div class="bg-decor" aria-hidden="true">
-    <svg class="shamrock s1" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 18 C16 14 12 12 9 14 C6 16 7 21 11 22 C13 22 15 21 16 18Z M16 18 C16 14 20 12 23 14 C26 16 25 21 21 22 C19 22 17 21 16 18Z M16 18 C13 19 11 23 13 26 C15 28 19 27 19 23 C19 21 18 19 16 18Z M16 14 L16 28" stroke="currentColor" stroke-width="1.2" fill="currentColor" fill-opacity="0.5"/></svg>
-    <svg class="shamrock s2" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 18 C16 14 12 12 9 14 C6 16 7 21 11 22 C13 22 15 21 16 18Z M16 18 C16 14 20 12 23 14 C26 16 25 21 21 22 C19 22 17 21 16 18Z M16 18 C13 19 11 23 13 26 C15 28 19 27 19 23 C19 21 18 19 16 18Z" fill="currentColor"/></svg>
-    <svg class="shamrock s3" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 18 C16 14 12 12 9 14 C6 16 7 21 11 22 C13 22 15 21 16 18Z M16 18 C16 14 20 12 23 14 C26 16 25 21 21 22 C19 22 17 21 16 18Z M16 18 C13 19 11 23 13 26 C15 28 19 27 19 23 C19 21 18 19 16 18Z" fill="currentColor"/></svg>
-    <svg class="leaf l1" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M20 4 C8 12 6 26 14 34 C20 30 30 20 28 8 C26 6 22 4 20 4Z" fill="currentColor"/></svg>
-    <svg class="leaf l2" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M20 4 C8 12 6 26 14 34 C20 30 30 20 28 8 C26 6 22 4 20 4Z" fill="currentColor"/></svg>
-  </div>
+  <!-- ============== Brand mark (reusable SVG) ============== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="markGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#1ea05a"/>
+        <stop offset="100%" stop-color="#0a4f2e"/>
+      </linearGradient>
+      <symbol id="brand-mark" viewBox="0 0 48 48">
+        <circle cx="24" cy="24" r="22" fill="url(#markGrad)"/>
+        <path d="M24 9 C18 13 14 19 14 26 C14 32 18 36 23 37 L23 24 C23 18 23 13 24 9Z" fill="#ffffff" opacity="0.95"/>
+        <path d="M24 9 C30 13 34 19 34 26 C34 32 30 36 25 37 L25 24 C25 18 25 13 24 9Z" fill="#ffffff" opacity="0.75"/>
+        <path d="M24 9 V37" stroke="#0a4f2e" stroke-width="0.7" opacity="0.4"/>
+        <circle cx="24" cy="14" r="1.6" fill="#fbbf24"/>
+      </symbol>
+    </defs>
+  </svg>
 
   <header class="site-header">
     <div class="container nav">
       <a href="#" class="logo" aria-label="Leandro Araújo, The Irish Gardener">
-        <img src="logo.png" alt="" class="logo-img" onerror="this.style.display='none'">
+        <span class="logo-mark">
+          <img src="logo.png" alt="" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+          <svg class="logo-svg" style="display:none"><use href="#brand-mark"/></svg>
+        </span>
         <span class="logo-text">
           <span class="logo-name">Leandro Araújo</span>
           <span class="logo-tag">The Irish Gardener · Dublin</span>
@@ -34,10 +45,6 @@
       <nav class="nav-links">
         <a href="#showcase">Services</a>
         <a href="#promise">Why me</a>
-        <a href="https://wa.me/353833883803?text=Hello%20Leandro%2C%20I%27d%20like%20to%20chat%20about%20a%20garden%20visit." class="btn btn-whatsapp btn-sm" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-          WhatsApp
-        </a>
         <a href="#book" class="btn btn-primary btn-sm">Book a visit</a>
       </nav>
     </div>
@@ -46,18 +53,15 @@
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-content">
-        <span class="eyebrow"><span class="flag-dot brazil"></span> Brazilian roots <span class="flag-dot ireland"></span> Irish soil · since 2014</span>
-        <h1>Your garden, <span class="highlight">sorted.</span></h1>
-        <p class="lead">Lawn mowing, hedge pruning and seasonal garden tidy-ups across Dublin. <strong>One gardener, every visit.</strong> On time, every time.</p>
+        <span class="eyebrow"><span class="flag-dot brazil"></span> Brazilian gardener · Dublin since 2014</span>
+        <h1>Gardens that <em>thrive.</em><br>Hands that care.</h1>
+        <p class="lead">Lawn mowing, hedge pruning and seasonal tidy-ups across Dublin. One gardener, every visit. On time, every time.</p>
         <div class="hero-cta">
           <a href="#book" class="btn btn-primary btn-xl">
             Book a visit
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="https://wa.me/353833883803?text=Hello%20Leandro%2C%20I%27d%20like%20to%20chat%20about%20a%20garden%20visit." target="_blank" rel="noopener" class="btn btn-whatsapp btn-xl">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-            Chat now
-          </a>
+          <a href="#showcase" class="btn btn-ghost btn-xl">View services</a>
         </div>
         <div class="hero-trust">
           <div class="trust-item"><strong>10+</strong><span>years in Dublin</span></div>
@@ -68,17 +72,18 @@
         </div>
       </div>
       <div class="hero-visual">
-        <div class="hero-mascot">
-          <img src="logo.png" alt="The Irish Gardener mascot" class="mascot-img" onerror="this.parentElement.classList.add('mascot-fallback')">
-          <div class="mascot-fallback-content">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="100" cy="100" r="90" fill="#16a34a"/>
-              <path d="M100 40 C70 50 55 80 60 120 C65 145 80 160 100 160 C120 160 135 145 140 120 C145 80 130 50 100 40Z" fill="#15803d"/>
-              <text x="100" y="115" font-family="Fredoka" font-size="22" font-weight="700" fill="#fff" text-anchor="middle">IRISH</text>
-              <text x="100" y="140" font-family="Fredoka" font-size="22" font-weight="700" fill="#fbbf24" text-anchor="middle">GARDENER</text>
-            </svg>
+        <div class="hero-figure">
+          <img src="logo.png" alt="The Irish Gardener — Leandro Araújo" class="hero-mascot-img" onerror="this.style.display='none'; document.querySelector('.hero-figure').classList.add('photo-fallback')">
+          <div class="hero-figure-photo" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?w=900&q=85&auto=format&fit=crop" alt="A lush garden in summer light" loading="eager">
           </div>
-          <span class="badge-pill"><span class="dot"></span> Available this week</span>
+          <div class="hero-figure-card">
+            <span class="hero-figure-card-dot"></span>
+            <div>
+              <strong>Available this week</strong>
+              <span class="muted small">Book the next slot</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -88,37 +93,40 @@
     <div class="container">
       <div class="section-heading">
         <span class="eyebrow">What I do</span>
-        <h2>Three services. <span class="highlight">Every garden, sorted.</span></h2>
+        <h2>Three services. <em>Every garden, sorted.</em></h2>
       </div>
       <div class="showcase-grid">
         <a href="#book" class="showcase-card">
           <div class="showcase-img-wrap">
-            <img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=900&q=80&auto=format&fit=crop" alt="Freshly mowed lawn" loading="lazy">
-            <span class="showcase-tag">90 min</span>
+            <img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=900&q=85&auto=format&fit=crop" alt="Freshly mowed lawn with crisp lines" loading="lazy">
           </div>
           <div class="showcase-info">
+            <div class="showcase-meta"><span class="dot"></span> 90 min</div>
             <h3>Lawn mowing</h3>
             <p>Crisp lines, edged borders, clippings hauled away.</p>
+            <span class="showcase-link">Book this →</span>
           </div>
         </a>
         <a href="#book" class="showcase-card">
           <div class="showcase-img-wrap">
-            <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=900&q=80&auto=format&fit=crop" alt="Manicured hedge" loading="lazy">
-            <span class="showcase-tag">2 h</span>
+            <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=900&q=85&auto=format&fit=crop" alt="Manicured hedge in a garden" loading="lazy">
           </div>
           <div class="showcase-info">
+            <div class="showcase-meta"><span class="dot"></span> 2 hours</div>
             <h3>Hedge &amp; tree pruning</h3>
             <p>Shape, thin and restore. Sharp tools, careful hand.</p>
+            <span class="showcase-link">Book this →</span>
           </div>
         </a>
         <a href="#book" class="showcase-card">
           <div class="showcase-img-wrap">
-            <img src="https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?w=900&q=80&auto=format&fit=crop" alt="Tidy garden bed with plants" loading="lazy">
-            <span class="showcase-tag">1 h</span>
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&q=85&auto=format&fit=crop" alt="Raking and gathering autumn leaves in a garden" loading="lazy">
           </div>
           <div class="showcase-info">
+            <div class="showcase-meta"><span class="dot"></span> 1 hour</div>
             <h3>Garden tidy-up</h3>
-            <p>Weeding, raking, deadheading — your garden, refreshed.</p>
+            <p>Weeding, raking, leaf collection — your garden, refreshed and clean.</p>
+            <span class="showcase-link">Book this →</span>
           </div>
         </a>
       </div>
@@ -129,14 +137,14 @@
     <div class="container">
       <div class="section-heading">
         <span class="eyebrow">Why me</span>
-        <h2>Tropical patience. <span class="highlight">Irish precision.</span></h2>
+        <h2>Tropical patience. <em>Irish precision.</em></h2>
       </div>
       <div class="pillars">
         <article class="pillar">
           <div class="pillar-icon">
             <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="11" r="5" stroke="currentColor" stroke-width="2.2"/>
-              <path d="M6 27C6 22 10 19 16 19C22 19 26 22 26 27" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="16" cy="11" r="5" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M6 27C6 22 10 19 16 19C22 19 26 22 26 27" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
             </svg>
           </div>
           <h3>One gardener. Always me.</h3>
@@ -145,8 +153,8 @@
         <article class="pillar">
           <div class="pillar-icon">
             <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M16 4 C16 4 8 10 8 18 C8 23 11 27 16 27 C21 27 24 23 24 18 C24 10 16 4 16 4Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
-              <path d="M12 17 Q16 13 20 17" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M16 4 C16 4 8 10 8 18 C8 23 11 27 16 27 C21 27 24 23 24 18 C24 10 16 4 16 4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M12 17 Q16 13 20 17" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
             </svg>
           </div>
           <h3>Two countries' know-how.</h3>
@@ -155,12 +163,12 @@
         <article class="pillar">
           <div class="pillar-icon">
             <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2.2"/>
-              <path d="M16 9V16L20 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+              <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M16 9V16L20 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </div>
           <h3>On time. Every time.</h3>
-          <p>Bookings sync straight to my calendar — pick a slot, it's locked. No phone tag, no double-booking.</p>
+          <p>Bookings sync with my calendar — pick a slot, it's locked. No phone tag, no double-booking.</p>
         </article>
       </div>
     </div>
@@ -170,8 +178,8 @@
     <div class="container">
       <div class="section-heading">
         <span class="eyebrow">Book a visit</span>
-        <h2>Reserve in <span class="highlight">under a minute.</span></h2>
-        <p class="section-sub">Live availability — instant confirmation.</p>
+        <h2>Reserve in <em>under a minute.</em></h2>
+        <p class="section-sub">Live availability. Instant confirmation.</p>
       </div>
 
       <div class="wizard">
@@ -236,11 +244,11 @@
           <section id="step-done" class="step done-step" data-step="5">
             <div class="check-circle">
               <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/>
-                <path d="M14 24L21 31L34 17" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2"/>
+                <path d="M14 24L21 31L34 17" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
-            <h3 class="step-title">You're all set — see you soon!</h3>
+            <h3 class="step-title">You're all set — see you soon.</h3>
             <p id="confirmation" class="confirmation"></p>
             <p class="muted small">I'll send a quick WhatsApp the day before to confirm. Obrigado &amp; go raibh maith agat!</p>
             <button class="btn btn-secondary" onclick="location.reload()">Book another visit</button>
@@ -254,26 +262,33 @@
     <div class="container footer-grid">
       <div class="footer-brand">
         <a href="#" class="logo">
-          <img src="logo.png" alt="" class="logo-img" onerror="this.style.display='none'">
+          <span class="logo-mark">
+            <img src="logo.png" alt="" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+            <svg class="logo-svg" style="display:none"><use href="#brand-mark"/></svg>
+          </span>
           <span class="logo-text">
             <span class="logo-name">Leandro Araújo</span>
             <span class="logo-tag">The Irish Gardener · Dublin</span>
           </span>
         </a>
+        <p class="muted small footer-tagline">Brazilian roots · Irish soil · since 2014</p>
       </div>
       <div class="footer-contact">
+        <p class="footer-label">Quick contact</p>
+        <a href="tel:+353833883803" class="footer-phone">+353 83 388 3803</a>
         <a href="https://wa.me/353833883803?text=Hello%20Leandro%2C%20I%27d%20like%20to%20chat%20about%20a%20garden%20visit." target="_blank" rel="noopener" class="footer-link">
           <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-          +353 83 388 3803
+          Message on WhatsApp
         </a>
-        <p class="muted small">Brazilian roots · Irish soil · since 2014</p>
       </div>
+    </div>
+    <div class="container footer-bottom">
+      <p class="muted small">&copy; 2026 Leandro Araújo. Bookings synced live with Google Calendar.</p>
     </div>
   </footer>
 
   <a href="https://wa.me/353833883803?text=Hello%20Leandro%2C%20I%27d%20like%20to%20chat%20about%20a%20garden%20visit." target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Chat with Leandro on WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-    <span class="whatsapp-fab-pulse"></span>
   </a>
 
   <script src="script.js"></script>
