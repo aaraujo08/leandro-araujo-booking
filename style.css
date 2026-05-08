@@ -367,12 +367,16 @@ h3 {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: 1fr;
+  gap: 0;
   align-items: center;
+  text-align: center;
+  justify-items: center;
 }
 
-.hero-content { max-width: 600px; }
+.hero-content { max-width: 760px; }
+.hero-content .hero-cta { justify-content: center; }
+.hero-content .hero-trust { justify-content: center; }
 .hero h1 { margin-bottom: 1.5rem; }
 .hero .lead { margin-bottom: 2.25rem; }
 
